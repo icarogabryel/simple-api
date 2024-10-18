@@ -1,3 +1,12 @@
 from django.db import models
 
 # Create your models here.
+class Task(models.Model):
+    statusChoices = [('p', 'Pending'),
+                     ('w', 'working'),
+                     ('d', 'Done')]
+
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    status = models.CharField(choices=statusChoices, default='p', max_length=100)
+    creation_date = models.DateField()
